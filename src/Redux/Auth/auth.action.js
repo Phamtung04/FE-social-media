@@ -26,8 +26,13 @@ import {
     UPDATE_PROFILE_REQUEST,
     UPDATE_PROFILE_SUCCESS, VERIFY_PASSWORD_CODE_FAILURE, VERIFY_PASSWORD_CODE_REQUEST, VERIFY_PASSWORD_CODE_SUCCESS
 } from "./auth.actionType";
+import {useNotify} from "../../hooks/useNotify";
+
+
 
 export const loginUserAction = (loginData) => async (dispatch) => {
+    const {successNotify, errorNotify} = useNotify();
+
     dispatch({type: LOGIN_REQUEST});
     try {
         const {data} = await axios.post(
@@ -41,13 +46,16 @@ export const loginUserAction = (loginData) => async (dispatch) => {
         console.log("login", data);
 
         dispatch({type: LOGIN_SUCCESS, payload: data.token});
+        successNotify("Welcome to social media");
     } catch (error) {
         console.log("------", error);
         dispatch({type: LOGIN_FAILURE, payload: error});
+        errorNotify(error.response.data.message || "Thông tin tài khoản và mật khẩu không chính xác");
     }
 };
 
 export const registerUserAction = (loginData) => async (dispatch) => {
+    const {successNotify, errorNotify} = useNotify();
     dispatch({type: LOGIN_REQUEST});
     try {
         const {data} = await axios.post(
@@ -61,9 +69,11 @@ export const registerUserAction = (loginData) => async (dispatch) => {
         console.log("register", data);
 
         dispatch({type: REGISTER_SUCCESS, payload: data.jwt});
+        successNotify("Đăng ký thành công");
     } catch (error) {
         console.log("------", error);
         dispatch({type: REGISTER_FAILURE, payload: error});
+        errorNotify(error.response.data.message || "Đăng ký thất bại");
     }
 };
 
@@ -120,48 +130,55 @@ export const updateProfileAction = (value) => async (dispatch) => {
     }
 };
 export const logoutAction = () => async (dispatch) => {
+    const {successNotify} = useNotify();
     try {
-
         localStorage.removeItem("jwt");
         dispatch({type: LOGOUT_SUCCESS});
+        successNotify("Đăng xuất thành công");
     } catch (error) {
         dispatch({type: LOGOUT_FAIL, payload: error});
     }
 };
 
 export const forgotPasswordAction = (value) => async (dispatch) => {
+    const {successNotify, errorNotify} = useNotify();
     dispatch({type: FORGOT_PASSWORD_REQUEST});
     try {
         const {data} = await axios.post(`${API_BASE_URL}/api/forgotPassword/verifyMail`, value.data);
-
         dispatch({type: FORGOT_PASSWORD_SUCCESS, payload: data});
+        successNotify("Mã xác nhận đã được gửi vào email của bạn");
     } catch (error) {
         console.log("------", error);
         dispatch({type: FORGOT_PASSWORD_FAILURE, payload: error});
+        errorNotify(error.response.data.message || "Email không tồn tại");
     }
 }
 
 export const verifyPasswordCodeAction = (value) => async (dispatch) => {
+    const {successNotify, errorNotify} = useNotify();
     dispatch({type: VERIFY_PASSWORD_CODE_REQUEST});
     try {
         const data = await axios.post(`${API_BASE_URL}/api/forgotPassword/verify/otp`, value);
-
         dispatch({type: VERIFY_PASSWORD_CODE_SUCCESS, payload: data.data});
+        successNotify("Thành công");
     } catch (error) {
         console.log("------", error);
         dispatch({type: VERIFY_PASSWORD_CODE_FAILURE, payload: error});
+        errorNotify(error.response.data.message || "Mã xác nhận không chính xác");
     }
 }
 
 export const resetPasswordAction = (value) => async (dispatch) => {
+    const {successNotify, errorNotify} = useNotify();
     dispatch({type: CHANGE_PASSWORD_REQUEST});
     try {
         const data = await axios.post(`${API_BASE_URL}/api/forgotPassword/changePassword`, value);
         dispatch({type: CHANGE_PASSWORD_SUCCESS, payload: data.data});
-        console.log("reset password------", data);
+        successNotify("Thành công");
     } catch (error) {
         console.log("-----", error);
         dispatch({type: CHANGE_PASSWORD_FAILURE, payload: error});
+        errorNotify(error.response.data.message || "Mã xác nhận không chính xác");
     }
 }
 

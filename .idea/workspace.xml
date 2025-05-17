@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55d8238f-7849-45f5-9c23-83164fc8875a" name="Changes" comment="create function forgot password">
-      <change beforePath="$PROJECT_DIR$/../mxh_BE/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mxh_BE/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useNotify.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/Auth/auth.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Auth/auth.action.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchUser/SearchUser.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchUser/SearchUser.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/notification/notificationbell.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/notification/notificationbell.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Authentication/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Authentication/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/HomePage/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/HomePage/HomePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Message/Message.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Message/Message.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +43,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Phamtung04/media-social.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/Phamtung04/FE-social-media.git&quot;,
     &quot;accountId&quot;: &quot;c957d6e0-1eb2-47f4-b618-16e2909176ed&quot;
   }
 }</component>
@@ -63,7 +71,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ToggleCodyToolWindowAfterMigration&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;forgot&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/NgoDoAn/media-social/zosh-social-react/src&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -104,6 +112,9 @@
       <workItem from="1745713699714" duration="3445000" />
       <workItem from="1746146441093" duration="16287000" />
       <workItem from="1746232093592" duration="1415000" />
+      <workItem from="1746540331958" duration="4392000" />
+      <workItem from="1746847418409" duration="7542000" />
+      <workItem from="1747443742883" duration="14000" />
     </task>
     <task id="LOCAL-00001" summary="update post">
       <option name="closed" value="true" />

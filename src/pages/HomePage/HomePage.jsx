@@ -16,9 +16,9 @@ const HomePage = () => {
   // const dispatch = useDispatch();
   const location = useLocation();
   const jwt = localStorage.getItem("jwt");
-  const auth = useSelector((store) => store.user);
+  // const auth = useSelector((store) => store.user);
+  const auth = useSelector((state) => state.auth.user);
 
- 
 
   return (
      <div className="px-20">

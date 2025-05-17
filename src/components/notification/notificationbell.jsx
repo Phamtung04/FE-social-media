@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import SockJS from 'sockjs-client';
 import { Client } from '@stomp/stompjs';
 import NotificationIcon from './notification';
+import {API_BASE_URL} from "../../config/api";
 
 const NotificationBell = ({ username }) => {
   const [notifications, setNotifications] = useState([]);
@@ -10,7 +11,8 @@ const NotificationBell = ({ username }) => {
 
   useEffect(() => {
     const stompClient = new Client({
-      webSocketFactory: () => new SockJS("http://localhost:8080/ws"),
+      webSocketFactory: () => new SockJS(`${API_BASE_URL}/ws`),
+      // webSocketFactory: () => new SockJS("http://localhost:8080/ws"),
       reconnectDelay: 5000,
     });
 
