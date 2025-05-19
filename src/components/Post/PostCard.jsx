@@ -9,7 +9,7 @@ import {
     IconButton,
     Typography,
 } from "@mui/material";
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import {red} from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -24,7 +24,8 @@ import {isLikedByReqUser} from "../../utils/isLikeByReqUser";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import {Link} from "react-router-dom";
-
+import SockJS from "sockjs-client";
+import {Client} from '@stomp/stompjs';
 
 dayjs.extend(relativeTime);
 
@@ -39,21 +40,56 @@ const formatId = (str) =>
 
 const PostCard = ({item}) => {
     const [showComments, setShowComments] = useState(false);
+    const [comments, setComments] = useState([]);
     const handleShowComment = () => setShowComments(!showComments);
     const dispatch = useDispatch();
     const handleCreateComment = (content) => {
-        const reqData = {
-            postId: item.id,
-            data: {
-                content
-            }
-        }
-        dispatch(createCommentAction(reqData))
+       const reqData = { postId: item.id, data: { content }};
+  try {
+    const res =  dispatch(createCommentAction(reqData));
+    if(res && res.payload) {
+      setComments(prev => [res.payload, ...prev]);
+    }
+  } catch (error) {
+    console.log("Failed to create comment", error);
+  }
     };
+    useEffect(() => {
+  setComments(item.comments || []);
+}, [item.comments]);
     const {auth} = useSelector((store) => store);
     const handleLikePost = () => {
         dispatch(getLikePostAction(item.id))
+        
     }
+     useEffect(() => {
+    const stompClient = new Client({
+      webSocketFactory: () => new SockJS("http://localhost:8080/ws"),
+      reconnectDelay: 5000,
+    });
+
+    stompClient.onConnect = () => {
+      console.log("Connected to WebSocket server");
+      
+      stompClient.subscribe(`/posts/${item.id}/comments`, (message) => {
+        const comment = JSON.parse(message.body);
+        console.log("comment received:", comment); 
+        // Thêm thông báo mới vào đầu danh sách
+        setComments(prev => [comment, ...prev]);
+      });
+    };
+
+    stompClient.onStompError = (frame) => {
+      console.error("Broker error:", frame.headers, frame.body);
+    };
+
+    stompClient.activate();
+
+   
+    return () => {
+      stompClient.deactivate();
+    };
+  }, [item.id]);
 
     return (
         <Card className=''>
@@ -88,6 +124,16 @@ const PostCard = ({item}) => {
                     height="194"
                     image={item.image}
                     alt="Paella dish"
+                />
+            ) : ''}
+            {item.video ? (
+                <CardMedia
+                   component="video"
+                    src={item.video}
+                    controls
+                    autoPlay={false}
+                    muted
+                    sx={{ height: 300 }}
                 />
             ) : ''}
             <CardActions className="flex justify-between" disableSpacing>
@@ -128,21 +174,19 @@ const PostCard = ({item}) => {
                 </div>
                 <Divider/>
                 <div className="mx-2 space-y-1 my-0 text-xs">
-                    {item.comments.map((comment) =>
-                        <div className="flex items-center space-x-2">
-                            <div className="flex  justify-center my-3 items-center  border-[#3b4054]">
-                                <Avatar src={comment.user.avatar}
-                                        sx={{height: "2rem", width: "2rem", fontSize: ".8rem"}}/>
-                                <span className="mx-3 ">
-                  <div
-                      className="text-sm font-semibold text-gray-900 dark:text-white">{comment.user.firstName + " " + comment.user.lastName}</div>
+                    {comments.map((comment, index) =>
+            <div key={index} className="flex items-center space-x-2">
+              <div className="flex  justify-center my-3 items-center  border-[#3b4054]">
+                <Avatar src={comment.user.avatar} sx={{ height: "2rem", width: "2rem", fontSize: ".8rem" }} />
+                <span className="mx-3 ">
+                  <div className="text-sm font-semibold text-gray-900 dark:text-white">{comment.user.firstName + " " + comment.user.lastName}</div>
 
                   <p className="mt-1 ml-3 text-sm">{comment.content}</p>
-                </span>
-                            </div>
+                </span >
+              </div>
 
-                        </div>)
-                    }
+            </div>)
+          }
                 </div>
             </section>}
         </Card>
