@@ -30,7 +30,6 @@ export const postReducer = (state = initialState, action) => {
     switch (action.type) {
         case CREATE_POST_REQUEST:
         case GET_ALL_POST_REQUEST:
-        case GET_USERS_POST_REQUEST:
         case LIKE_POST_REQUEST:
             return { ...state, error: null, loading: false };
         case CREATE_POST_SUCCESS:
@@ -49,7 +48,10 @@ export const postReducer = (state = initialState, action) => {
             }
         case GET_USERS_POST_SUCCESS:
             return {
-
+                ...state,
+                posts: action.payload,
+                loading: false,
+                error: null,
             }
         case LIKE_POST_SUCCESS:
             return {
@@ -66,7 +68,7 @@ export const postReducer = (state = initialState, action) => {
             return {
                 ...state,
                 newComment:action.payload,
-               
+
                 loading: false,
                 error: null,
             }

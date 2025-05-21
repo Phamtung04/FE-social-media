@@ -5,18 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55d8238f-7849-45f5-9c23-83164fc8875a" name="Changes" comment="create function forgot password">
-      <change afterPath="$PROJECT_DIR$/src/Redux/notification/noti.action.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Redux/notification/noti.actionType.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Redux/notification/noti.reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/notification/DisplayNotifiaction.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Redux/reels/reels.action.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Redux/reels/reels.actionType.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Redux/reels/reels.reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Post/post.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Post/post.action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Post/post.actionType.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Post/post.actionType.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Redux/Post/post.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Post/post.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/Profile/profile.ation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Profile/profile.action.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HomeRigth/PopularUserCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeRigth/PopularUserCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CreatePost/CreatePostModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreatePost/CreatePostModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MiddlePart/MiddlePart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MiddlePart/MiddlePart.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Post/PostCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Post/PostCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Reels/CreatReelsForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reels/CreatReelsForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Reels/Reels.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reels/Reels.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Reels/UserReelCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reels/UserReelCard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/notification/notificationbell.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/notification/notificationbell.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Profile/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Profile/Profile.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +126,10 @@
       <workItem from="1747473365638" duration="4405000" />
       <workItem from="1747552033586" duration="1183000" />
       <workItem from="1747553261537" duration="3839000" />
-      <workItem from="1747574324065" duration="12728000" />
+      <workItem from="1747574324065" duration="12846000" />
+      <workItem from="1747664312164" duration="7457000" />
+      <workItem from="1747744422676" duration="9724000" />
+      <workItem from="1747827554498" duration="1186000" />
     </task>
     <task id="LOCAL-00001" summary="update post">
       <option name="closed" value="true" />

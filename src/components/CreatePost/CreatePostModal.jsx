@@ -275,7 +275,7 @@ const CreatePostModal = ({ handleClose, open }) => {
                            id='video-input'
                     />
                     <label htmlFor="video-input">
-                      <IconButton color='primary'>
+                      <IconButton color='primary' component="span">
                         <VideoCallIcon />
                       </IconButton>
                     </label>
@@ -284,6 +284,10 @@ const CreatePostModal = ({ handleClose, open }) => {
                 </div>
                 {selectedImage && <div>
                   <img className='h-[10rem]' src={selectedImage} alt="" />
+                </div>}
+
+                {selectedVideo && <div>
+                  <img className='h-[10rem]' src={selectedVideo} alt="" />
                 </div>}
 
                 <div className='flex w-full justify-end'>

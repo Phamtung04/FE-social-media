@@ -31,7 +31,7 @@ const NotificationBell = ({username}) => {
 
         stompClient.onConnect = () => {
             console.log("Connected to WebSocket");
-            stompClient.subscribe(`/user/${username}/notification`, (message) => {
+            stompClient.subscribe(`/user/${username}/notifications`, (message) => {
                 const notification = JSON.parse(message.body);
                 console.log("New notification:", notification);
 
@@ -86,26 +86,6 @@ const NotificationBell = ({username}) => {
             dispatch(putNotificationAction(notificationId));
         }
     };
-
-    // Di chuyển phần xử lý dữ liệu allNotifications lên trước khi sử dụng trong hàm display
-    // const allNotifications = [...notifications, ...noti].map(item => {
-    //     const notification = item.notification || item;
-    //     const sender = notification.sender || {};
-    //
-    //     return {
-    //         id: item.id,
-    //         isRead: item.isRead,
-    //         receivedAt: item.receivedAt || item.createdAt || new Date().toISOString(),
-    //         notification: {
-    //             notification: notification.notification || "Bạn có thông báo mới",
-    //             sender: {
-    //                 firstName: sender.firstName || "",
-    //                 lastName: sender.lastName || "",
-    //                 avatar: sender.avatar || ""
-    //             }
-    //         }
-    //     };
-    // });
 
     const allNotifications = [...notifications, ...noti]
         .filter(item => {

@@ -5,6 +5,7 @@ import { postReducer } from './Post/post.reducer'
 import { messageReducer } from './Message/message.reducer'
 import { profileReducer } from './Profile/profile.reducer'
 import {notificationReducer} from "./notification/noti.reducer";
+import {reelsReducer} from "./reels/reels.reducer";
 
 
 const rootReducers = combineReducers({
@@ -12,7 +13,8 @@ const rootReducers = combineReducers({
     post:postReducer,
     message:messageReducer,
     profile:profileReducer,
-    notify: notificationReducer
+    notify: notificationReducer,
+    reels: reelsReducer
 })
 
 export const store=legacy_createStore(rootReducers, applyMiddleware(thunk))

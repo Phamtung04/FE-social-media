@@ -42,7 +42,6 @@ const MiddlePart = () => {
   const handleCloseCreatePostModal = () => setOpenCreatePostModal(false);
   const handleOpenCreatePostModal = () => {
     setOpenCreatePostModal(true);
-    console.log("open post model...");
   };
   useEffect(() => {
     dispatch(getAllPostAction());

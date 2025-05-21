@@ -18,6 +18,13 @@ code {
 
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE và Edge */
+  scrollbar-width: none;     /* Firefox */
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

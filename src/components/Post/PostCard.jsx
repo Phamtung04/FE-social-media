@@ -28,15 +28,6 @@ import {Link} from "react-router-dom";
 
 dayjs.extend(relativeTime);
 
-const formatId = (str) =>
-    str
-        .normalize("NFD") // Chuẩn hóa Unicode
-        .replace(/[\u0300-\u036f]/g, "") // Xóa dấu tiếng Việt
-        .replace(/[^\w\s]/g, "") // Xóa dấu câu
-        .replace(/\s+/g, "") // Xóa khoảng trắng
-        .toLowerCase();
-
-
 const PostCard = ({item}) => {
     const [showComments, setShowComments] = useState(false);
     const handleShowComment = () => setShowComments(!showComments);
@@ -90,6 +81,16 @@ const PostCard = ({item}) => {
                     alt="Paella dish"
                 />
             ) : ''}
+            {item.video ? (
+                <CardMedia
+                    component="video"
+                    src={item.video}
+                    controls
+                    autoPlay={false}
+                    muted
+                    sx={{ height: 300 }}
+                />
+            ) : ''}
             <CardActions className="flex justify-between" disableSpacing>
                 <div>
                     <IconButton onClick={handleLikePost}>
@@ -116,7 +117,7 @@ const PostCard = ({item}) => {
                 <div className='flex items-center space-x-5 mx-3 my-5'>
                     <Avatar src={auth.user.avatar}/>
                     <input onKeyPress={(e) => {
-                        if (e.key == "Enter") {
+                        if (e.key === "Enter") {
                             handleCreateComment(e.target.value);
                             e.target.value = "";
                         }
