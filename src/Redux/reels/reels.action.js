@@ -15,7 +15,6 @@ export const createReel = (reelsData) => async (dispatch) => {
     try {
         const {data} = await api.post(`/api/reels`, reelsData,);
         dispatch({type: GET_REELS_SUCCESS, payload: data});
-        console.log("create reels success-----", data)
     } catch (error) {
         console.log("create reels faild -----", error);
         dispatch({type: GET_REELS_FAILURE, payload: error});
@@ -27,7 +26,6 @@ export const getAllReelsAction = () => async (dispatch) => {
     try {
         const {data} = await api.get(`${API_BASE_URL}/api/reels`);
         dispatch({type: GET_ALL_REELS_SUCCESS, payload: data});
-        console.log("create reels success-----", data)
     } catch (error) {
         dispatch({type: GET_ALL_REELS_FAILURE, payload: error});
     }

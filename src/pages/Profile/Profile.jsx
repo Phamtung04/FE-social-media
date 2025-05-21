@@ -49,10 +49,11 @@ const Profile = () => {
     };
 
     const [isFollowing, setIsFollowing] = useState(false);
+    console.log("profile.user?.following: ", profile.user?.following?.includes(auth.user?.id))
 
     useEffect(() => {
 
-        if (profile.user?.following?.includes(auth.user?.id)) {
+        if (profile.user?.follower?.includes(auth.user?.id)) {
             setIsFollowing(true);
         } else {
             setIsFollowing(false);

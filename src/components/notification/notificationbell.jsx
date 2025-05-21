@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import SockJS from 'sockjs-client';
 import {Client} from '@stomp/stompjs';
 import NotificationIcon from './notification';
@@ -57,7 +57,6 @@ const NotificationBell = ({username}) => {
         setIsOpen(newIsOpen);
 
         if (!isOpen) {
-            // 👉 Khi mở dropdown thì reset số thông báo chưa đọc
             setUnreadCount(0);
         }
     };
@@ -86,7 +85,6 @@ const NotificationBell = ({username}) => {
             dispatch(putNotificationAction(notificationId));
         }
     };
-
     const allNotifications = [...notifications, ...noti]
         .filter(item => {
             const notification = item.notification || item;
@@ -125,22 +123,22 @@ const NotificationBell = ({username}) => {
                         {allNotifications
                             .slice()
                             .sort((a, b) => new Date(b.receivedAt) - new Date(a.receivedAt))
-                            .map((item, index) => {
-                                const isRead = isReadNotification(item.id);
+                            .map((item) => {
+                                const notificationId = item.id;
+                                const isRead = isReadNotification(notificationId);
                                 const isImportant = !item.isRead;
                                 const fullName =
                                     item.notification?.sender?.firstName +
                                     " " +
                                     item.notification?.sender?.lastName;
 
-                                console.log('isImportant: ', item?.id)
                                 return (
                                     <div
-                                        key={`new-${index}`}
+                                        key={`notif-${notificationId}`}
                                         className={`p-4 border-b border-gray-200 cursor-pointer hover:bg-gray-100 ${
-                                            isImportant && !isRead ? "bg-red-100" : "bg-white"
+                                            isImportant && !isRead ? "bg-gray-300" : "bg-white"
                                         }`}
-                                        onClick={() => handleNotificationClick(item?.id)}
+                                        onClick={() => handleNotificationClick(item.id)}
                                     >
                                         <DisplayNotification
                                             time={dayjs(item.receivedAt).fromNow()}
@@ -151,6 +149,7 @@ const NotificationBell = ({username}) => {
                                     </div>
                                 );
                             })}
+
                     </>
                 )}
             </div>
@@ -160,7 +159,7 @@ const NotificationBell = ({username}) => {
     return (
         <div className="relative" ref={dropdownRef}>
             <div className="cursor-pointer" onClick={toggleDropdown}>
-                <NotificationIcon notificationCount={unreadCount} />
+                <NotificationIcon notificationCount={unreadCount}/>
             </div>
             {isOpen && display()}
         </div>
