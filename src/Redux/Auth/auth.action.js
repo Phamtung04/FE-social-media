@@ -2,13 +2,11 @@ import axios from "axios";
 import {api, API_BASE_URL} from "../../config/api";
 import {
     CHANGE_PASSWORD_FAILURE,
-    CHANGE_PASSWORD_REQUEST, CHANGE_PASSWORD_SUCCESS,
+    CHANGE_PASSWORD_REQUEST,
+    CHANGE_PASSWORD_SUCCESS,
     FORGOT_PASSWORD_FAILURE,
     FORGOT_PASSWORD_REQUEST,
     FORGOT_PASSWORD_SUCCESS,
-    GET_POST_FAILURE,
-    GET_POST_REQUEST,
-    GET_POST_SUCCESS,
     GET_PROFILE_FAILURE,
     GET_PROFILE_REQUEST,
     GET_PROFILE_SUCCESS,
@@ -24,10 +22,12 @@ import {
     SEARCH_USER_SUCCESS,
     UPDATE_PROFILE_FAILURE,
     UPDATE_PROFILE_REQUEST,
-    UPDATE_PROFILE_SUCCESS, VERIFY_PASSWORD_CODE_FAILURE, VERIFY_PASSWORD_CODE_REQUEST, VERIFY_PASSWORD_CODE_SUCCESS
+    UPDATE_PROFILE_SUCCESS,
+    VERIFY_PASSWORD_CODE_FAILURE,
+    VERIFY_PASSWORD_CODE_REQUEST,
+    VERIFY_PASSWORD_CODE_SUCCESS
 } from "./auth.actionType";
 import {useNotify} from "../../hooks/useNotify";
-
 
 
 export const loginUserAction = (loginData) => async (dispatch) => {
@@ -89,10 +89,6 @@ export const getProfileAction = () => async (dispatch) => {
                 }
             }
         );
-
-        console.log("profile------", data);
-
-
         dispatch({type: GET_PROFILE_SUCCESS, payload: data});
     } catch (error) {
         console.log("------", error);

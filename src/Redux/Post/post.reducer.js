@@ -1,22 +1,21 @@
 import {
+    CREATE_COMMENT_SUCCESS,
+    CREATE_POST_FAILURE,
     CREATE_POST_REQUEST,
     CREATE_POST_SUCCESS,
-    CREATE_POST_FAILURE,
+    DELETE_POST_FAILURE,
+    DELETE_POST_REQUEST,
+    DELETE_POST_SUCCESS,
+    GET_ALL_POST_FAILURE,
     GET_ALL_POST_REQUEST,
     GET_ALL_POST_SUCCESS,
-    GET_ALL_POST_FAILURE,
-    UPDATE_POST_REQUEST,
-    UPDATE_POST_SUCCESS,
-    UPDATE_POST_FAILURE,
-    LIKE_POST_REQUEST,
     GET_USERS_POST_FAILURE,
     GET_USERS_POST_SUCCESS,
-    GET_USERS_POST_REQUEST,
-    LIKE_POST_SUCCESS,
     LIKE_POST_FAILURE,
-    CREATE_COMMENT_SUCCESS, GET_NOTIFICATION_ALL_REQUEST, GET_NOTIFICATION_ALL_FAILURE, GET_NOTIFICATION_ALL_SUCCESS,
-}
-    from "./post.actionType";
+    LIKE_POST_REQUEST,
+    LIKE_POST_SUCCESS,
+} from "./post.actionType";
+
 const initialState = {
     post: null,
     loading: false,
@@ -31,7 +30,8 @@ export const postReducer = (state = initialState, action) => {
         case CREATE_POST_REQUEST:
         case GET_ALL_POST_REQUEST:
         case LIKE_POST_REQUEST:
-            return { ...state, error: null, loading: false };
+        case DELETE_POST_REQUEST:
+            return {...state, error: null, loading: false};
         case CREATE_POST_SUCCESS:
             return {
                 ...state, post: action.payload,
@@ -58,8 +58,7 @@ export const postReducer = (state = initialState, action) => {
                 ...state,
                 like: action.payload,
                 posts: state.posts.map(
-                    (item) => item.id === action.
-                        payload.id ? action.payload : item
+                    (item) => item.id === action.payload.id ? action.payload : item
                 ),
                 loading: false,
                 error: null,
@@ -67,16 +66,24 @@ export const postReducer = (state = initialState, action) => {
         case CREATE_COMMENT_SUCCESS:
             return {
                 ...state,
-                newComment:action.payload,
+                newComment: action.payload,
 
                 loading: false,
                 error: null,
             }
+        case DELETE_POST_SUCCESS:
+            return {
+                ...state,
+                posts: state.posts.filter(post => post.id !== action.payload.id),
+                loading: false,
+                error: null,
+            };
         case CREATE_POST_FAILURE:
         case GET_ALL_POST_FAILURE:
         case GET_USERS_POST_FAILURE:
         case LIKE_POST_FAILURE:
-            return { ...state, error: action.payload, loading: false }
+        case DELETE_POST_FAILURE:
+            return {...state, error: action.payload, loading: false}
         default:
             return state;
     }

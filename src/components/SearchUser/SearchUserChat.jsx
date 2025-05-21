@@ -2,7 +2,7 @@ import {Avatar, Card, CardHeader} from '@mui/material';
 import React, {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux';
 import {searchUser} from '../../Redux/Auth/auth.action';
-import {useNavigate} from "react-router-dom";
+import {createChatAction} from '../../Redux/Message/message.action';
 
 const formatId = (str) =>
     str
@@ -13,11 +13,10 @@ const formatId = (str) =>
         .toLowerCase(); // Chuyển thành chữ thường
 
 
-const SearchUser = () => {
+const SearchUserChat = () => {
     const [username, setUsername] = useState("");
     const dispatch = useDispatch();
     const {message, auth} = useSelector(store => store);
-    const navigate = useNavigate();
 
     const handleSearchUser = (e) => {
         setUsername(e.target.value);
@@ -25,7 +24,7 @@ const SearchUser = () => {
         console.log("search user", auth.searchUser);
     };
     const handleClick = (id) => {
-        navigate(`/profile/${id}`)
+        dispatch(createChatAction({idUser: id}))
     }
     return (
         <div>
@@ -53,4 +52,4 @@ const SearchUser = () => {
     )
 }
 
-export default SearchUser
+export default SearchUserChat

@@ -5,7 +5,7 @@ import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import SearchUser from '../../components/SearchUser/SearchUser';
+import SearchUserChat from '../../components/SearchUser/SearchUserChat';
 import UserChatCard from './UserChatCard';
 import ChatMessage from './ChatMessage';
 import {useDispatch, useSelector} from 'react-redux';
@@ -122,7 +122,7 @@ const Message = () => {
                                 <h1 className='text-xl font-bold'>Home</h1>
                             </div>
                             <div className='h-[83vh]'>
-                                <SearchUser/>
+                                <SearchUserChat/>
                                 <div className='h-full space-y-4 mt-5 overflow-y-scroll hideScrollbar'>
                                     {/*{reduxMessage.chat && reduxMessage.chat.map((item) => (*/}
                                     {/*  <div*/}

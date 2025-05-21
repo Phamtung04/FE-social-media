@@ -1,10 +1,11 @@
 import React from "react";
-import { navigationMenu } from "./SidebarNavigation";
-import { Avatar, Button, Card, Divider, Menu, MenuItem } from "@mui/material";
+import {navigationMenu} from "./SidebarNavigation";
+import {Avatar, Button, Card, Divider, Menu, MenuItem} from "@mui/material";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import {getProfileAction, logoutAction} from "../../Redux/Auth/auth.action";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import {logoutAction} from "../../Redux/Auth/auth.action";
+import SearchUser from "../SearchUser/SearchUser";
 
 const Sidebar = () => {
   const auth = useSelector(store => store.auth?.user);
@@ -65,6 +66,10 @@ const Sidebar = () => {
       <div className="space-y-8 pl-5">
         <div className="">
           <span className="logo font-bold text-xl"> Meida Social</span>
+          <div className="mr-10">
+            <SearchUser/>
+
+          </div>
         </div>
         <div className="space-y-8 ">
           {navigationMenu.map((item, index) => (

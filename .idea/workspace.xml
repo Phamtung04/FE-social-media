@@ -5,9 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55d8238f-7849-45f5-9c23-83164fc8875a" name="Changes" comment="create function forgot password">
+      <change afterPath="$PROJECT_DIR$/src/Redux/user/user.action.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Redux/user/user.actionType.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Redux/user/user.reducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SearchUser/SearchUserChat.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Profile/PostCardProfile.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/reels/reels.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/reels/reels.action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/notification/notificationbell.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/notification/notificationbell.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/Auth/auth.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Auth/auth.action.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/Post/post.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Post/post.action.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/Post/post.actionType.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Post/post.actionType.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/Post/post.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Post/post.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HomeRigth/HomeRigth.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeRigth/HomeRigth.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HomeRigth/PopularUserCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomeRigth/PopularUserCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MiddlePart/MiddlePart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MiddlePart/MiddlePart.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearUser/SearchUser.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchUser/SearchUser.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchUser/SearchUser.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Message/Message.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Message/Message.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Profile/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Profile/Profile.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,6 +94,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\NgoDoAn\media-social\zosh-social-react\src" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\NgoDoAn\media-social\zosh-social-react\src\Redux\user" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -116,7 +134,7 @@
       <workItem from="1747574324065" duration="12846000" />
       <workItem from="1747664312164" duration="7457000" />
       <workItem from="1747744422676" duration="9724000" />
-      <workItem from="1747827554498" duration="5206000" />
+      <workItem from="1747827554498" duration="21023000" />
     </task>
     <task id="LOCAL-00001" summary="update post">
       <option name="closed" value="true" />

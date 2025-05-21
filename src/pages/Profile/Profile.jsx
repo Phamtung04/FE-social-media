@@ -1,11 +1,12 @@
 import {Avatar, Box, Button, Card, Tab, Tabs} from "@mui/material";
 import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import PostCard from "../../components/Post/PostCard";
 import {useDispatch, useSelector} from "react-redux";
 import ProfileModals from "./ProfileModals";
 import {followUserAction, getProfileByIdAction} from "../../Redux/Profile/profile.action";
-import {getUsersPostAction} from "../../Redux/Post/post.action";
+import {deletePostProfileAction, getUsersPostAction} from "../../Redux/Post/post.action";
+import PostCardProfile from "./PostCardProfile";
 
 const tabs = [
     {value: "post", name: "Post"},
@@ -28,7 +29,7 @@ const Profile = () => {
     const [open, setOpen] = useState(false);
     const {posts} = useSelector((state) => state.post);
 
-    const {auth, profile} = useSelector((store) => store);
+    const {auth, profile, post} = useSelector((store) => store);
 
     useEffect(() => {
         if (id) {
@@ -36,9 +37,6 @@ const Profile = () => {
         }
     }, [id, dispatch]);
     const isOwnProfile = Number(auth.user?.id) === Number(profile.user?.id);
-
-    console.log(posts)
-
 
     const handleOpenProfileModals = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -49,10 +47,8 @@ const Profile = () => {
     };
 
     const [isFollowing, setIsFollowing] = useState(false);
-    console.log("profile.user?.following: ", profile.user?.following?.includes(auth.user?.id))
 
     useEffect(() => {
-
         if (profile.user?.follower?.includes(auth.user?.id)) {
             setIsFollowing(true);
         } else {
@@ -60,12 +56,16 @@ const Profile = () => {
         }
 
         dispatch(getUsersPostAction(id));
-    }, [profile.user, auth.user, id]);
+    }, [profile.user, auth.user, id, post.posts]);
 
     const handleFollowToggle = () => {
 
         dispatch(followUserAction(profile.user?.id));
     };
+
+    const deletePostProfine = async (delID) => {
+        await dispatch(deletePostProfileAction(delID))
+    }
     if (!profile.user) {
         return <div className="text-center py-10">Loading profile...</div>;
     }
@@ -125,7 +125,7 @@ const Profile = () => {
                                 {posts.slice()
                                     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((item, index) => (
                                         <div key={index} className="border border-slate-100 rounded-md">
-                                            <PostCard item={item}/>
+                                            <PostCardProfile deletePostProfine={() => deletePostProfine(item.id)} item={item}/>
                                         </div>
                                     ))}
                             </div>

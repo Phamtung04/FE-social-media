@@ -1,19 +1,26 @@
 import {api, API_BASE_URL} from "../../config/api";
 import {
-    CREATE_COMMENT_FAILURE, CREATE_COMMENT_REQUEST, CREATE_COMMENT_SUCCESS, CREATE_POST_FAILURE,
+    CREATE_COMMENT_FAILURE,
+    CREATE_COMMENT_REQUEST,
+    CREATE_COMMENT_SUCCESS,
+    CREATE_POST_FAILURE,
     CREATE_POST_REQUEST,
     CREATE_POST_SUCCESS,
+    DELETE_POST_FAILURE,
+    DELETE_POST_REQUEST,
+    DELETE_POST_SUCCESS,
     GET_ALL_POST_FAILURE,
     GET_ALL_POST_REQUEST,
-    GET_ALL_POST_SUCCESS, GET_NOTIFICATION_ALL_FAILURE, GET_NOTIFICATION_ALL_REQUEST, GET_NOTIFICATION_ALL_SUCCESS,
+    GET_ALL_POST_SUCCESS,
     GET_USERS_POST_FAILURE,
     GET_USERS_POST_REQUEST,
     GET_USERS_POST_SUCCESS,
     LIKE_POST_FAILURE,
     LIKE_POST_REQUEST,
     LIKE_POST_SUCCESS
-}
-    from "./post.actionType";
+} from "./post.actionType";
+import {useNotify} from "../../hooks/useNotify";
+import {useNavigate} from "react-router-dom";
 
 export const createPostAction = (postData) => async (dispatch) => {
     dispatch({type: CREATE_POST_REQUEST})
@@ -83,3 +90,18 @@ export const createCommentAction = (reqData) => async (dispatch) => {
         dispatch({type: CREATE_COMMENT_FAILURE, payload: error});
     }
 }
+
+export const deletePostProfileAction = (Pid) => async (dispatch) => {
+    const {successNotify, errorNotify} = useNotify();
+    dispatch({type: DELETE_POST_REQUEST});
+    try {
+
+        const {data} = await api.delete(`/api/posts/${Pid}`);
+        dispatch({type: DELETE_POST_SUCCESS, payload: data});
+        successNotify("Thành công")
+    } catch (error) {
+        dispatch({type: DELETE_POST_FAILURE, payload: error});
+        errorNotify("Xóa thất bại")
+        console.log("error:", error);
+    }
+};
